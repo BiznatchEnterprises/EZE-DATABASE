@@ -18,17 +18,17 @@ Once parsed from the database: All data can be read by a PHP script by using a d
 # Contribute to development
 Please donate cryptocoins:
 
-Bitcoin: 1Mc9ZxuhH5nMBCbaikhpeuWLaS55hAy2xj
-BitConnect: 8HYuunQqthXvLLD4h1kQwnNFLJHZRx6Xx7
-Litcoin: Lcj3raz2GwWKAgYTBXwfS2Tzr2hLstXrXZ
-Peercoin: PLAtqFPWs5BHYvnNfjajpzdXfS9K499LbW
-Bata: BPPbTF9vrQuJvaSrYgvmgYq7v9Wbw1U5XT
-Dash: Xe1UeYxjgDoEJYfr2VqWC2nVnR3EPAxfNq
-Stratis: Sbfm49D8wnQqmopqYxuTkpyWp1mtizM2UR
-Pivx: DNRraJPkEAtrvM8zp9VL5SQYs2Yvt7zrbT
-Zcoin: aKUmKWqKiW5GYBy8McxjudxbSvbtWFfa94
-Crypto Bullion: 5Y5dv3RPp2e8Pt3yD1v8nQ4LGPjcSyep7p
-GoldCoin: DzcAKmTtNUA1V7HzoF4xtaLuBvKiAt5ZXe
+- Bitcoin: 1Mc9ZxuhH5nMBCbaikhpeuWLaS55hAy2xj
+- BitConnect: 8HYuunQqthXvLLD4h1kQwnNFLJHZRx6Xx7
+- Litcoin: Lcj3raz2GwWKAgYTBXwfS2Tzr2hLstXrXZ
+- Peercoin: PLAtqFPWs5BHYvnNfjajpzdXfS9K499LbW
+- Bata: BPPbTF9vrQuJvaSrYgvmgYq7v9Wbw1U5XT
+- Dash: Xe1UeYxjgDoEJYfr2VqWC2nVnR3EPAxfNq
+- Stratis: Sbfm49D8wnQqmopqYxuTkpyWp1mtizM2UR
+- Pivx: DNRraJPkEAtrvM8zp9VL5SQYs2Yvt7zrbT
+- Zcoin: aKUmKWqKiW5GYBy8McxjudxbSvbtWFfa94
+- Crypto Bullion: 5Y5dv3RPp2e8Pt3yD1v8nQ4LGPjcSyep7p
+- GoldCoin: DzcAKmTtNUA1V7HzoF4xtaLuBvKiAt5ZXe
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
