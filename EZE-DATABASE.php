@@ -1,6 +1,6 @@
 <?php
 //                                           ---------------------------------------------------------
-//                                           EZE-DATABASE-HELPER � 2002-2008 Biznatch Enterprises
+//                                           EZE-DATABASE-HELPER (C) 2002-2008 Biznatch Enterprises
 //					     Biznaturally.ca - https://github.com/BiznatchEnterprises/
 //                                                    EZE-DATABASE (BETA) Version: 1.05
 //                                                    Double Nested Database Parser/Synthesizer
