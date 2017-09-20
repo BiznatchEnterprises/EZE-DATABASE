@@ -2,7 +2,7 @@
 
 Dynamic database class written in PHP (OOP)
 
-(C) 2002 - 2017 - Biznatch Enterprises (Biznaturally.ca)
+(C) 2002 - 2017 - Justin Percy - Biznatch Enterprises (Biznaturally.ca)
 
 - RAW FILE FORMAT: 
 <跏[1]跏[%02%DATA1]跏[%03%]跏[%04%]跏[%05%]跏[%06%]跏[%07%]跏[%08%]跏[%09%]跏[%10%DATA2]跏[%11%]跏[%12%]跏>
