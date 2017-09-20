@@ -4,10 +4,9 @@ Dynamic database class written in PHP (OOP)
 
 (C) 2017 - Biznatch Enterprises (Biznaturally.ca)
 
-Version 2.0 is currently in development
-
-- NEW FILE FORMAT: <*label*[data]&*label*[data]>
-- COMPLETLY REWRITTEN
+- RAW FILE FORMAT: 
+<跏[1]跏[%02%DATA1]跏[%03%]跏[%04%]跏[%05%]跏[%06%]跏[%07%]跏[%08%]跏[%09%]跏[%10%DATA2]跏[%11%]跏[%12%]跏>
+<跏[1]跏[%02%DATA1]跏[%03%]跏[%04%]跏[%05%]跏[%06%]跏[%07%]跏[%08%]跏[%09%]跏[%10%DATA2]跏[%11%]跏[%12%]跏>
 
 "Raw Data" is stored in a similar way as a Hard Drive. Database files (Drive IDs) contains Partitions accociated with Sectors of individual data. These Data Sectors within Partitions are stored in a flat-file with unique identifiers and can be individually encrypted with unique keys or "linked" by hashing or other means... To sectors contained in partitions stored in seperate database files.
 
