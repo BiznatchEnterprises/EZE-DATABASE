@@ -1,4 +1,4 @@
-# EZE-DATABASE
+# EZE-DATABASE 1.06
 
 Dynamic database class written in PHP (OOP)
 
