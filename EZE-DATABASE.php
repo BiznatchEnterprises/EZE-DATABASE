@@ -1,29 +1,48 @@
 <?php
-/* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
- * |||      EZE-DATABASE BETA 1.6 - (C) 2002-2017 Biznatch Enterprises            |||
- * |||    Double Nested Database Parser/Synthesizer with unique data IDs          |||
- * |||       Biznaturally.ca - https://github.com/BiznatchEnterprises             |||
- * |||                                                                            |||
- * ||| EZE-DATABASE LOADER - function INPUTS                       			 	  |||
- * ||| $DBS_COMMAND                                                               |||
- * ||| $LOADER_FILENAME     													  |||
- * ||| $DBS_FILENAME                                                              |||
- * ||| $DBS_OPTION1 															  |||
- * ||| $DBS_OPTION3 													 	      |||
- * ||| $DBS_OPTION4  															  |||
- * ||| $DBS_OPTION5 															  |||
- * |||																			  |||
- * ||| EZE-DATABASE INPUTS (This Script file):							  		  |||
- * ||| $EZE_DBS_CMD = $DBSCOMMAND;												  |||
- * ||| $EZE_DBS_FILE = $DBSFILENAME;											  |||
- * ||| $EZE_DBS_OPT1 														      |||
- * ||| $EZE_DBS_OPT2 															  |||
- * ||| $EZE_DBS_OPT3 															  |||
- * ||| $EZE_DBS_OPT4 															  |||
- * ||| $EZE_DBS_OPT5 															  |||
- * ||| $DBS_STATUS true/false (echo debuging)									  |||
- * |||                                                                            |||
- * ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ * |||      EZE-DATABASE BETA 1.6 - (C) 2002-2017 Biznatch Enterprises      |||
+ * |||    Double Nested Database Parser/Synthesizer with unique data IDs    |||
+ * |||           MIT License https://opensource.org/licenses/MIT            |||
+ * |||      Copyright (C) 2017 Biznatch Enterprises - Biznaturally.ca       |||
+ * |||                                                          	    |||
+ * ||| EZE-DATABASE LOADER - function INPUTS                   	            |||
+ * ||| $DBS_COMMAND                                     	            |||
+ * ||| $LOADER_FILENAME     						    |||
+ * ||| $DBS_FILENAME                                                        |||
+ * ||| $DBS_OPTION1 							    |||
+ * ||| $DBS_OPTION3 							    |||
+ * ||| $DBS_OPTION4  							    |||
+ * ||| $DBS_OPTION5 							    |||
+ * |||									    |||
+ * ||| EZE-DATABASE INPUTS (This Script file):				    |||
+ * ||| $EZE_DBS_CMD = $DBSCOMMAND;					    |||
+ * ||| $EZE_DBS_FILE = $DBSFILENAME;					    |||
+ * ||| $EZE_DBS_OPT1 							    |||
+ * ||| $EZE_DBS_OPT2 							    |||
+ * ||| $EZE_DBS_OPT3 							    |||
+ * ||| $EZE_DBS_OPT4 							    |||
+ * ||| $EZE_DBS_OPT5 							    |||
+ * ||| $DBS_STATUS true/false (echo debuging)				    |||
+ * |||                                                                      |||
+ * |||   Permission is hereby granted, free of charge, to any person        |||
+ * |||   obtaining a copy of this software and associated documentation     |||
+ * |||   files (the "Software"), to deal in the Software without            |||
+ * |||   restriction, including without limitation the rights to use,       |||
+ * |||   copy, modify, merge, publish, distribute, sublicense, and/or       |||
+ * |||   sell copies of the Software, and to permit persons to whom the     |||
+ * |||   Software is furnished to do so, subject to the following           |||
+ * |||   conditions: The above copyright notice and this permission         |||
+ * |||   notice shall be included in all copies or substantial portions     |||
+ * |||   of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT         |||
+ * |||   WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT        |||
+ * |||   LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A        |||
+ * |||   PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE      |||
+ * |||   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES      |||
+ * |||   OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR      |||
+ * |||   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE          |||
+ * |||   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.             |||
+ * ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
 
 $NEWLINE = chr(13) . chr(10);           // WIN/DOS: chr(13) . chr(10)    UNIX: "\n"
 
