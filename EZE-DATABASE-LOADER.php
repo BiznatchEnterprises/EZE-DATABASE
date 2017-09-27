@@ -4,15 +4,15 @@
  * |||    Double Nested Database Parser/Synthesizer with unique data IDs          |||
  * |||       Biznaturally.ca - https://github.com/BiznatchEnterprises             |||
  * |||                                                                            |||
- * ||| EZE-DATABASE LOADER - function INPUTS                       			 	  |||
+ * ||| EZE-DATABASE LOADER - function INPUTS                       		  |||
  * ||| $DBS_COMMAND                                                               |||
- * ||| $LOADER_FILENAME     													  |||
+ * ||| $LOADER_FILENAME     							  |||
  * ||| $DBS_FILENAME                                                              |||
- * ||| $DBS_OPTION1 															  |||
- * ||| $DBS_OPTION3 													 	      |||
- * ||| $DBS_OPTION4  															  |||
- * ||| $DBS_OPTION5 															  |||
- * ||| $DBS_STATUS true/false (echo debuging)									  |||
+ * ||| $DBS_OPTION1 								  |||
+ * ||| $DBS_OPTION3 								  |||
+ * ||| $DBS_OPTION4  								  |||
+ * ||| $DBS_OPTION5 								  |||
+ * ||| $DBS_STATUS true/false (echo debuging)					  |||
  * |||                                                                            |||
  * ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 
