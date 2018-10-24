@@ -1,59 +1,76 @@
 <?php
-/* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
- * |||      EZE-DATABASE BETA 1.6 - (C) 2002-2017 Biznatch Enterprises            |||
- * |||    Double Nested Database Parser/Synthesizer with unique data IDs          |||
- * |||           MIT License https://opensource.org/licenses/MIT          	  |||
- * |||      Copyright (C) 2017 Biznatch Enterprises - Biznaturally.ca     	  |||
- * |||                                                                            |||
- * ||| EZE-DATABASE LOADER - function INPUTS                       		  |||
- * ||| $DBS_COMMAND                                                               |||
- * ||| $LOADER_FILENAME     							  |||
- * ||| $DBS_FILENAME                                                              |||
- * ||| $DBS_OPTION1 								  |||
- * ||| $DBS_OPTION3 								  |||
- * ||| $DBS_OPTION4  								  |||
- * ||| $DBS_OPTION5 								  |||
- * ||| $DBS_STATUS true/false (echo debuging)					  |||
- * |||                                                                            |||
- * |||   Permission is hereby granted, free of charge, to any person      	  |||
- * |||   obtaining a copy of this software and associated documentation   	  |||
- * |||   files (the "Software"), to deal in the Software without          	  |||
- * |||   restriction, including without limitation the rights to use,     	  |||
- * |||   copy, modify, merge, publish, distribute, sublicense, and/or     	  |||
- * |||   sell copies of the Software, and to permit persons to whom the   	  |||
- * |||   Software is furnished to do so, subject to the following         	  |||
- * |||   conditions: The above copyright notice and this permission       	  |||
- * |||   notice shall be included in all copies or substantial portions   	  |||
- * |||   of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT       	  |||
- * |||   WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT      	  |||
- * |||   LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A      	  |||
- * |||   PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE    	  |||
- * |||   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES    	  |||
- * |||   OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR    	  |||
- * |||   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE        	  |||
- * |||   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.           	  |||
- * ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ * |||      EZE-DATABASE BETA 1.7 - (C) 2002-2018 Biznatch Enterprises      |||
+ * |||    Double Nested Database Parser/Synthesizer with unique data IDs    |||
+ * |||           MIT License https://opensource.org/licenses/MIT          	|||
+ * |||      Copyright (C) 2002 Biznatch Enterprises - Biznaturally.ca     	|||
+ * |||                                                                      |||
+ * ||| EZE-DATABASE LOADER - function INPUTS                       		    |||
+ * ||| $DBS_COMMAND                                                         |||
+ * ||| $LOADER_FILENAME     							                    |||
+ * ||| $DBS_FILENAME                                                        |||
+ * ||| $DBS_OPTION1 								                        |||
+ * ||| $DBS_OPTION3 								                        |||
+ * ||| $DBS_OPTION4  								                        |||
+ * ||| $DBS_OPTION5 								                        |||
+ * ||| $DBS_STATUS true/false (echo debuging)					            |||
+ * |||                                                                      |||
+ * |||   Permission is hereby granted, free of charge, to any person      	|||
+ * |||   obtaining a copy of this software and associated documentation   	|||
+ * |||   files (the "Software"), to deal in the Software without          	|||
+ * |||   restriction, including without limitation the rights to use,     	|||
+ * |||   copy, modify, merge, publish, distribute, sublicense, and/or     	|||
+ * |||   sell copies of the Software, and to permit persons to whom the   	|||
+ * |||   Software is furnished to do so, subject to the following         	|||
+ * |||   conditions: The above copyright notice and this permission       	|||
+ * |||   notice shall be included in all copies or substantial portions   	|||
+ * |||   of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT       	|||
+ * |||   WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT      	|||
+ * |||   LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A      	|||
+ * |||   PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE    	|||
+ * |||   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES    	|||
+ * |||   OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR    	|||
+ * |||   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE        	|||
+ * |||   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.           	|||
+ * ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 
-// ---------- PHP SCRIPT OPENCLOSEEXIT CLEANER START ---------------
-//CLEANS IMPORTED PHP SCRIPTS
-function PHPSOCEC($INPUT){
+$EZE_DBS_OUTPUT = array();
 
-	$INPUT = str_replace('<?php exit; ?>', '', $INPUT); 
-	$INPUT = str_replace('<?PHP EXIT; ?>', '', $INPUT); 
-	$INPUT = str_replace('<?php exit; ?>', '', $INPUT); 
-	$INPUT = str_replace('<?PHP EXIT; ?>', '', $INPUT); 
-	$INPUT = str_replace('<?php', '', $INPUT); 
-	$INPUT = str_replace('<?PHP', '', $INPUT); 
-	$INPUT = str_replace('?>', '', $INPUT); 
-return $INPUT;
+// -------------------- START --------------------
+// @ Name: PHPSOCEC()
+// @ Action: CLEANS IMPORTED PHP SCRIPTS
+// @ Param: string Input
+// @ Returns: string Input (cleaned)
+//
+function PHPSOCEC($INPUT)
+{
+
+	$INPUT = str_replace('<?php exit; ?>', '', $INPUT);
+	$INPUT = str_replace('<?PHP EXIT; ?>', '', $INPUT);
+	$INPUT = str_replace('<?php exit; ?>', '', $INPUT);
+	$INPUT = str_replace('<?PHP EXIT; ?>', '', $INPUT);
+	$INPUT = str_replace('<?php', '', $INPUT);
+	$INPUT = str_replace('<?PHP', '', $INPUT);
+    $INPUT = str_replace('?>', '', $INPUT);
+    
+    return $INPUT;
 
 }
-// ---------- PHP SCRIPT OPENCLOSEEXIT CLEANER END ---------------
+// --------------------- END ---------------------
 
-// ---------- XSS INJECTION PROTECTION START ---------
-function XSS_PROTECT($DATA)
-{
-    $DATA = str_replace(chr(13) . chr(10), '', $DATA);          // WIN/DOS: chr(13) . chr(10)    UNIX: "\n"
+// -------------------- START --------------------
+// @ Name: XSS_PROTECT()
+// @ Action: XSS INJECTION PROTECTION
+// @ Param: string DATA
+// @ Returns: string DATA (cleaned)
+//
+if (function_exists("XSS_PROTECT") == false){
+    function XSS_PROTECT($DATA)
+    {
+
+    $DATA = str_replace(chr(13) . chr(10), '', $DATA);          // WIN/DOS: chr(13) . chr(10)
+    $DATA = str_replace("\n", '', $DATA);                       // UNIX: "\n"
+    $DATA = str_replace(chr(13), '', $DATA);                    // ASCII {ENTER}"
 
     $DATA = str_replace('<' . chr(225), '', $DATA);       		// PARTITION START
     $DATA = str_replace(chr(225) . '>', '', $DATA); 			// PARTITION END
@@ -64,19 +81,31 @@ function XSS_PROTECT($DATA)
     $DATA = str_replace('}' . chr(223), '', $DATA); 			// SECTOR LABEL END
 
     return $DATA;
+    }
 }
-// ---------- XSS INJECTION PROTECTION END ---------
+// --------------------- END ---------------------
 
-// ---------------------- EZE_DBS_LOADER INIT START ----------------------
-
+// -------------------- START --------------------
+// @ Name: EZE_DBS_LOADER()
+// @ Action: EZE_DBS_LOADER INIT
+// @ Param: DBS_COMMAND
+// @ Param: ENGINE_FILENAME
+// @ Param: $DBS_OPTION1
+// @ Param: DBS_OPTION2
+// @ Param: DBS_OPTION3
+// @ Param: DBS_OPTION4
+// @ Param: DBS_OPTION5
+// @ Param: DBS_STATUS string TRUE\FALSE
+// @ Returns: Unable to open file, but permissions are OK
+// @ Returns: Unable to open file, possible file permissions error
+// @ Status: Unable to open file, but permissions are OK
+// @ Status: Unable to open file, possible file permissions error
+//
 function EZE_DBS_LOADER($DBS_COMMAND, $ENGINE_FILENAME, $DBS_FILENAME, $DBS_OPTION1 = NULL, $DBS_OPTION2 = NULL, $DBS_OPTION3 = NULL, $DBS_OPTION4 = NULL, $DBS_OPTION5 = NULL, $DBS_STATUS = NULL)
 {
 
 	global $EZE_DBS_OUTPUT;
     global $LAST_DBS_ENGINE;
-
-    $CURRENTPATH = dirname(__FILE__);
-    $CURRENTPATH = str_replace("index.php", "", $CURRENTPATH);
 
 	$ERROR_MSG1 = '<b>EZE-DATABASE-LOADER ERROR:</b> PARSER FILE INVALID!';
     $ERROR_MSG1 .= '<br>(Unable to open file, but permissions are OK)<br>';
@@ -87,14 +116,11 @@ function EZE_DBS_LOADER($DBS_COMMAND, $ENGINE_FILENAME, $DBS_FILENAME, $DBS_OPTI
     $ERROR_MSG2 .= '<br><br>Command: ' . $DBS_COMMAND . '<br>Parser File: ' . $ENGINE_FILENAME . '<br>Databse File: ' . $DBS_FILENAME;
 
 	if ($ENGINE_FILENAME <> 'LASTLOADER')
-    {
-		$CURRENTPATH = dirname(__FILE__);
-		$CURRENTPATH = str_replace("EZE-DATABASE-LOADER.php", "", $CURRENTPATH);
-        
-		if (is_readable($CURRENTPATH . '/' . $ENGINE_FILENAME))
+    {      
+		if (is_readable($ENGINE_FILENAME))
         {
 		    $DBS_ENGINE = '';
-		    $open_file = fopen($CURRENTPATH . '/' . $ENGINE_FILENAME,"r+");
+		    $open_file = fopen($ENGINE_FILENAME,"r+");
 
 			if ($open_file <> "")
             {
@@ -173,7 +199,6 @@ function EZE_DBS_LOADER($DBS_COMMAND, $ENGINE_FILENAME, $DBS_FILENAME, $DBS_OPTI
     {
         $EZE_DBS_OPT5 = $DBS_OPTION5;
     }
-
 	if (isset($DBSOPTION6) == TRUE)
     {
         $EZE_DBS_OPT6 = $DBSOPTION6;
@@ -185,9 +210,9 @@ function EZE_DBS_LOADER($DBS_COMMAND, $ENGINE_FILENAME, $DBS_FILENAME, $DBS_OPTI
     }
 
 }
-// ---------------------- EZE_DBS_LOADER INIT END ----------------------
+// --------------------- END ---------------------
 
-//-----------------EZE_DATABASE PARSER START--------------------
+// ********************* START *********************
 class EZE_DATABASE
 {
 
@@ -195,25 +220,43 @@ class EZE_DATABASE
 	var $POSTMP;
 	var $EZEDBS_ENTRIES;
 
+    // -------------------- START --------------------
+    // @ Name: ParseString()
+    // @ Action: Parses text in a string between two sub-strings
+    // @ Param: string START_SUBSTR
+    // @ Param: string END_SUBSTR
+    // @ Param: integer Character Number to start
+    // @ Returns: string Parsed text
+    //
 	function ParseString($STRING, $START_SUBSTR, $END_SUBSTR, $START_POS)
     {
-	    $posa = strpos($STRING, $START_SUBSTR, $START_POS);
-	    $posb = strpos($STRING, $END_SUBSTR, $posa + strlen($START_SUBSTR));
-	    $this->POSTMP = $posa;
-	    return substr($STRING, $posa + strlen($START_SUBSTR), $posb - $posa - strlen($START_SUBSTR));
+	    $tmp_start = strpos($STRING, $START_SUBSTR, $START_POS);
+        $tmp_end = strpos($STRING, $END_SUBSTR, $tmp_start + strlen($START_SUBSTR));
+        $this->POSTMP = $tmp_start;
+        return substr($STRING, $tmp_start + strlen($START_SUBSTR), $tmp_end - $tmp_start - strlen($START_SUBSTR));
 	}	
 
+    // --------------------- END ---------------------
 
+    // -------------------- START --------------------
+    // @ Name: ParseDatabase()
+    // @ Action: Parses 2-Dimensional array from database string
+    // @ Param: string DATASTRING  parse data from here
+    // @ Param: string START_SUBSTR  Parse starting from this position 
+    // @ Param: string SEND_SUBSTR  Parse ending from this position 
+    // @ Returns: string PARSED between starting and ending sub-strings ($this->EZEDBS_DATA)
+    //
 	function ParseDatabase($DATASTRING, $START_SUBSTR, $END_SUBSTR)
     {
-	    $this->EZEDBS_DATA = array();
+        $this->EZEDBS_DATA = array();
+        
 	    $TOTCOMPS = substr_count($DATASTRING, $START_SUBSTR);
-        	for ($bb = 1; $bb <= $TOTCOMPS; $bb++)
-            {
-		        $DATA[$bb + 1] = $this->ParseString($DATASTRING, $START_SUBSTR, $END_SUBSTR, $this->POSTMP);
-		        $this->POSTMP = $this->POSTMP + strlen($START_SUBSTR) + 1;
+        for ($tmp_item = 1; $tmp_item <= $TOTCOMPS; $tmp_item++)
+        {
+		    $DATA[$tmp_item + 1] = $this->ParseString($DATASTRING, $START_SUBSTR, $END_SUBSTR, $this->POSTMP);
+		    $this->POSTMP = $this->POSTMP + strlen($START_SUBSTR) + 1;
 		
-		    }
+		}
 
 	    $this->EZEDBS_ENTRIES = $TOTCOMPS;
 	
@@ -225,32 +268,41 @@ class EZE_DATABASE
 		    }
 	    }
 	}
+    // --------------------- END ---------------------
 
 }
-//-----------------EZE_DATABASE PARSER END--------------------
+// ********************** END **********************
 
 //-------------LOAD_RAWDATA START----------------
+// -------------------- START --------------------
+// @ Name: LOAD_RAWDATA()
+// @ Action: Loads data from file into string
+// @ Param: string INPUTFILE
+// @ Returns: FNF
+// @ Status: <br><u><b>ERROR:</b>' . $INPUTFILE . ' File Not Found!</u><br>
+// @ Returns: <NoPermissions>
+// @ Status: <br><u><b>ERROR:</b>' . $INPUTFILE . ' Not Readable!</u><br>
+// @ Returns: <EmptyContents>
+// @ Status: <br><u><b>ERROR:</b>' . $INPUTFILE . ' Empty File!</u><br>
+//
 function LOAD_RAWDATA($INPUTFILE)
 {
 
-    $CURRENTPATH = dirname(__FILE__);
-    $CURRENTPATH = str_replace("index.php", "", $CURRENTPATH);
-
     $FILECONTENTS = '';
 
-	if (!file_exists($CURRENTPATH . $INPUTFILE))
+	if (!file_exists( $INPUTFILE))
     {
         if ($DBS_STATUS == 'TRUE')
         {
-            echo '<br><u><b>ERROR:</b>' . $CURRENTPATH . $INPUTFILE . ' File Not Found!</u><br>';
+            echo '<br><u><b>ERROR:</b>' . $INPUTFILE . ' File Not Found!</u><br>';
         }
 
         return 'FNF';
     }
 
-	if (is_readable($CURRENTPATH . $INPUTFILE))
+	if (is_readable($INPUTFILE))
     {
-	    $open_file = fopen($CURRENTPATH . $INPUTFILE,"r+");
+	    $open_file = fopen($INPUTFILE,"r+");
 
 	    while ((!feof($open_file)))
         {
@@ -263,7 +315,7 @@ function LOAD_RAWDATA($INPUTFILE)
 	{
         if ($DBS_STATUS == 'TRUE')
         {
-	        echo '<br><u><b>ERROR:</b>' . $CURRENTPATH . $INPUTFILE . ' Not Readable!</u><br>';
+	        echo '<br><u><b>ERROR:</b>' . $INPUTFILE . ' Not Readable!</u><br>';
         }
         
         return '<NoPermissions>';
@@ -277,23 +329,149 @@ function LOAD_RAWDATA($INPUTFILE)
     {
         if ($DBS_STATUS == 'TRUE')
         {
-	        echo '<br><u><b>ERROR:</b>' . $CURRENTPATH . $INPUTFILE . ' Empty File!</u><br>';
+	        echo '<br><u><b>ERROR:</b>' . $INPUTFILE . ' Empty File!</u><br>';
         }
 
         return '<EmptyContents>';
     }
 }
-//-------------LOAD_RAWDATA END----------------
+// --------------------- END ---------------------
 
-//-------------WRITE_RAWDATA START----------------
+// -------------------- START --------------------
+// @ Name: WRITE_RAWDATA()
+// @ Action: Writes raw data to file
+// @ Param: string OUTPUTFILE 
+// @ Param: string OUTPUTFILE contents
+//
 function WRITE_RAWDATA($OUTPUTFILE, $CONTENTS)
 {
-	$CURRENTPATH = dirname(__FILE__);
-	$CURRENTPATH = str_replace("index.php", "", $CURRENTPATH);
-	$handle = fopen($CURRENTPATH . $OUTPUTFILE, "w");
+	$handle = fopen( $OUTPUTFILE, "w");
 	fputs($handle, $CONTENTS);
 	fclose($handle);
 }
-//-------------WRITE_RAWDATA END----------------
+// --------------------- END ---------------------
+
+// -------------------- START --------------------
+// @ Name: DBS_FindSector()
+// @ Action: Finds first occurance of Sector (search) returns partition and sector array key numbers
+// @ Returns: array  Key 0: = true/false (function status)
+// @ Returns: array  Key 1: = Partition ID
+// @ Returns: array  Key 2: = Sector ID
+//
+function DBS_FindSector($INPUTARRAY, $FINDSTRING)
+{
+    $OUTPUT = array();
+	$OUTPUT[0] = false; // FUNCTION STATUS
+    $OUTPUT[1] = 0; // Partition Array KEY
+    $OUTPUT[2] = 0; // Sector Array KEY
+
+	for ($temp_dim1 = 1; $temp_dim1<= count($INPUTARRAY) - 1; $temp_dim1++)
+    {
+		for ($temp_dim2 = 1; $temp_dim2 <= count($INPUTARRAY[$temp_dim1]) - 1; $temp_dim2++)
+        {
+            if (isset($INPUTARRAY[$temp_dim1][$temp_dim2]) == true)
+            {
+                if ($INPUTARRAY[$temp_dim1][$temp_dim2] == $FINDSTRING)
+                {
+                    $OUTPUT[0] = true;  
+                    $OUTPUT[1] = $temp_dim1; // Partition
+                    $OUTPUT[2] = $temp_dim2; // Sector
+
+                    return $OUTPUT;
+			    }
+            }
+		}
+	}
+
+        return $OUTPUT;
+}
+// --------------------- END ---------------------
+
+// -------------------- START --------------------
+// @ Name: DBS_FindLastSector()
+// @ Action: Finds last occurance of Sector (search) returns partition and sector array key numbers
+// @ Param: string array INPUTARRAY    (Parsed Database Array)
+// @ Param: string FINDSTRING
+// @ Returns: array  Key 0: = true/false (function status)
+// @ Returns: array  Key 1: = Partition ID
+// @ Returns: array  Key 2: = Sector ID
+//
+function DBS_FindLastSector($INPUTARRAY, $FINDSTRING)
+{
+        $OUTPUT = array();
+	    $OUTPUT[0] = false; // FUNCTION STATUS
+        $OUTPUT[1] = 0; // Partition Array KEY
+        $OUTPUT[2] = 0; // Sector Array KEY
+
+	    for ($temp_dim1 = 1; $temp_dim1<= count($INPUTARRAY) - 1; $temp_dim1++)
+        {
+		    for ($temp_dim2 = 1; $temp_dim2 <= count($INPUTARRAY[$temp_dim1]) - 1; $temp_dim2++)
+            {
+                if (isset($INPUTARRAY[$temp_dim1][$temp_dim2]) == true)
+                {
+                    if ($INPUTARRAY[$temp_dim1][$temp_dim2] == $FINDSTRING)
+                    {
+                        $OUTPUT[0] = true;  
+                        $OUTPUT[1] = $temp_dim1; // Partition
+                        $OUTPUT[2] = $temp_dim2; // Sector
+
+			        }
+                }
+		    }
+	    }
+
+        return $OUTPUT;
+    }
+// --------------------- END ---------------------
+
+// -------------------- START --------------------
+// @ Name: DBS_FindPartition()
+// @ Action: Finds first occurance of Partition ID (search) returns array key number
+// @ Param: string array INPUTARRAY   (Parsed Database Array)
+// @ Param: string SEARCH find
+// @ Returns: Partition ID
+//
+function DBS_FindPartition($INPUTARRAY, $SEARCH)
+{
+    for ($temp_dim1 = 1; $temp_dim1 <= count($INPUTARRAY) - 1; $temp_dim1++)
+    {
+        if ($INPUTARRAY[$temp_dim1][1] == $SEARCH) // find Partition ID
+        {
+            return $temp_dim1;
+        }
+    }
+     return false;
+}
+// --------------------- END ---------------------
+
+// -------------------- START --------------------
+// @ Name: DBS_FindLastPartition()
+// @ Action: Finds last occurance of Partition ID (search) returns array key number
+// @ Param: string array INPUTARRAY   (Parsed Database Array)
+// @ Param: string SEARCH find
+// @ Returns: Partition ID
+//
+function DBS_FindLastPartition($INPUTARRAY, $SEARCH)
+{
+    $found = 0;
+
+    for ($temp_dim1 = 1; $temp_dim1 <= count($INPUTARRAY) - 1; $temp_dim1++)
+    {
+        if ($INPUTARRAY[$temp_dim1][1] == $SEARCH) // find Partition ID
+        {
+            $found = $temp_dim1;
+        }
+    }
+
+    if ($found > 0)
+    {
+        return $found;
+    }
+
+    return false;
+
+}
+// --------------------- END ---------------------
+
 
 ?>
