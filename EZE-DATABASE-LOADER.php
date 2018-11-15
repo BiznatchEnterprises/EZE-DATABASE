@@ -101,7 +101,7 @@ if (function_exists("XSS_PROTECT") == false){
 // @ Status: Unable to open file, but permissions are OK
 // @ Status: Unable to open file, possible file permissions error
 //
-function EZE_DBS_LOADER($DBS_COMMAND, $ENGINE_FILENAME, $DBS_FILENAME, $DBS_OPTION1 = NULL, $DBS_OPTION2 = NULL, $DBS_OPTION3 = NULL, $DBS_OPTION4 = NULL, $DBS_OPTION5 = NULL, $DBS_STATUS = NULL)
+function EZE_DBS_LOADER($DBS_COMMAND, $ENGINE_FILENAME, $DBS_FILENAME, $DBS_OPTION1 = NULL, $DBS_OPTION2 = NULL, $DBS_OPTION3 = NULL, $DBS_OPTION4 = NULL, $DBS_OPTION5 = NULL, $DBS_STATUS = "FALSE")
 {
 
 	global $EZE_DBS_OUTPUT;
@@ -287,6 +287,8 @@ class EZE_DATABASE
 //
 function LOAD_RAWDATA($INPUTFILE)
 {
+
+    $DBS_STATUS = "FALSE";
 
     $FILECONTENTS = '';
 
