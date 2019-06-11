@@ -18,7 +18,6 @@ Once parsed from the database: All data can be read by a PHP script by using a d
 Please donate cryptocoins:
 
 - Bitcoin: 1Mc9ZxuhH5nMBCbaikhpeuWLaS55hAy2xj
-- BitConnect: 8HYuunQqthXvLLD4h1kQwnNFLJHZRx6Xx7
 - Litecoin: Lcj3raz2GwWKAgYTBXwfS2Tzr2hLstXrXZ
 - Peercoin: PLAtqFPWs5BHYvnNfjajpzdXfS9K499LbW
 - Bata: BPPbTF9vrQuJvaSrYgvmgYq7v9Wbw1U5XT
